@@ -1,0 +1,16 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: hello-fargate-cluster
+  region: us-east-1
+
+fargateProfiles:
+  - name: fp-default
+    selectors:
+      # All workloads in the "monitoring" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: monitoring
+      # All workloads in the "web" Kubernetes namespace will be
+      # scheduled onto Fargate:
+      - namespace: web
